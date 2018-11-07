@@ -17,5 +17,6 @@ steps:
   inputs:
     command: publish
     publishWebProjects: True
+    projects: VSOnlineTest/VSOnlineTest.csproj
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
