@@ -19,4 +19,5 @@ steps:
     publishWebProjects: False
     projects: VSOnlineTest/VSOnlineTest.csproj
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
