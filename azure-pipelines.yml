@@ -10,14 +10,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- script: |
+    dotnet build --configuration $(buildConfiguration)
+    dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    publishWebProjects: False
-    projects: VSOnlineTest/VSOnlineTest.csproj
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    packDirectory: '$(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
+- task: PublishBuildArtifacts@1
